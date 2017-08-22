@@ -31,3 +31,8 @@
 # Debug files
 *.dSYM/
 *.su
+
+labs/02/linux/
+labs/02/C_FILES/
+labs/02/H_FILES/
+labs/02/stats.csv
