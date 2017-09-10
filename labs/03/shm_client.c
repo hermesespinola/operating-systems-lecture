@@ -5,11 +5,11 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define SHMSZ     27
 
-main()
-{
+int main() {
     int shmid;
     key_t key;
     char *shm, *s;
@@ -39,16 +39,12 @@ main()
     /*
      * Now read what the server put in the memory.
      */
-    for (s = shm; *s != NULL; s++)
-        putchar(*s);
-    putchar('\n');
+    s = shm;
+    while (*s != '*') {
+	if (*s != NULL) putchar(*s++);
+     }
 
-    /*
-     * Finally, change the first character of the 
-     * segment to '*', indicating we have read 
-     * the segment.
-     */
-    *shm = '*';
+    putchar('\n');
 
     exit(0);
 }

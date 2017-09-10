@@ -2,11 +2,16 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <errno.h>
+#include <stdlib.h>
 
 #define SHMSZ     27
 
-main()
-{
+int main() {
     char c;
     int shmid;
     key_t key;
@@ -39,18 +44,17 @@ main()
      * other process to read.
      */
     s = shm;
-
-    for (c = 'a'; c <= 'z'; c++)
+    for (c = scanf("say something: %c", &c); c =! '*'; )
         *s++ = c;
     *s = NULL;
 
     /*
-     * Finally, we wait until the other process 
+     * Finally, we wait until the other process
      * changes the first character of our memory
-     * to '*', indicating that it has read what 
+     * to '*', indicating that it has read what
      * we put there.
      */
-    while (*shm != '*')
+    while (*shm != '\003')
         sleep(1);
 
     exit(0);
