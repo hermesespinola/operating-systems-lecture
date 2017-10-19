@@ -1,8 +1,8 @@
 all:
-	gcc -lpthread  race_condition_semaphores.c -o race_condition_semaphores
-	gcc -lpthread  race_condition.c -o race_condition
-	gcc -lpthread  peterson.c -o peterson
-	
+	gcc -pthread  race_condition_semaphores.c -o race_condition_semaphores
+	gcc -pthread  race_condition.c -o race_condition
+	gcc -pthread  peterson.c -o peterson
+
 	g++ -DUSE_SPINLOCK -Wall -pthread spin_lock.c -o spin_lock
 	gcc client.c -o client -pthread
 	gcc server.c -o server -pthread

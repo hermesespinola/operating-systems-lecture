@@ -41,16 +41,16 @@ int main (int argc, char **argv){
     scanf ("%u", &value);
 
     /* initialize semaphores for shared processes */
-    sem = sem_open ("pSem", O_CREAT | O_EXCL, 0644, value); 
+    sem = sem_open ("pSem", O_CREAT | O_EXCL, 0644, value);
     /* name of semaphore is "pSem", semaphore is reached using this name */
-    sem_unlink ("pSem");      
+    sem_unlink ("pSem");
     /* unlink prevents the semaphore existing forever */
     /* if a crash occurs during the execution         */
     printf ("semaphores initialized.\n\n");
 
 
     /* fork child processes */
-    for (i = 0; i < n; i++){
+    for (i = 0; i < n; i++) {
         pid = fork ();
         if (pid < 0)              /* check for error      */
             printf ("Fork error.\n");
