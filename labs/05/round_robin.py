@@ -2,7 +2,7 @@
 # autor: Juan Manuel
 
 # Simulate the Round Robin mechanism based on a queue of processes
-# Graph the behavior of avg_turnaround_tms and context_switches 
+# Graph the behavior of avg_turnaround_tms and context_switches
 # of a queue of processes with diferent quantum values
 #
 # process = [] might be a random list of elapsed times
@@ -12,11 +12,11 @@ from matplotlib import cm
 import matplotlib.pyplot as plt
 
 def printInfo():
-    print ("Quantums") 
+    print ("Quantums")
     print quantums
-    print ("Avg Turnaround times:") 
+    print ("Avg Turnaround times:")
     print avg_turnaround_tms
-    print ("Context Switches") 
+    print ("Context Switches")
     print context_switches
     print("Initial processes")
     print processes
@@ -33,10 +33,10 @@ processes =[2,3,4,12,8,5,6,1]
 num_processes = len(processes)
 
 while quantum <= quantum_max:
-    
+
     processes =[2,3,4,12,8,5,6,1]
     max_process_size = 0
-    context_switch = 2
+    context_switch = 100
     context_switchs = 0
     execution_time = 0
     avg_turnaround_tm = 0.0
@@ -79,9 +79,9 @@ printInfo()
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-z = max_process_sizes
+# z = max_process_sizes
 y = avg_turnaround_tms
-# y = context_switches
+z = context_switches
 x = quantums
 
 ax.plot_trisurf(x, y, z, cmap=cm.jet, linewidth=0.2)
